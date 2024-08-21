@@ -1,0 +1,53 @@
+{
+  "name": "mtelec",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
+    "@google-analytics/data": "^4.8.0",
+    "@hookform/resolvers": "^3.3.4",
+    "@lucia-auth/adapter-mongodb": "^1.0.3",
+    "@mui/material": "^5.15.15",
+    "@mui/x-date-pickers": "^7.1.1",
+    "@react-google-maps/api": "^2.19.3",
+    "date-fns": "^3.6.0",
+    "framer-motion": "^11.0.25",
+    "googleapis": "^140.0.1",
+    "lucia": "^3.1.1",
+    "mapbox-gl": "^3.6.0",
+    "mongoose": "^8.3.0",
+    "next": "14.1.4",
+    "next-nprogress-bar": "^2.3.11",
+    "oslo": "^1.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-hook-form": "^7.51.2",
+    "react-icons": "^5.0.1",
+    "react-map-gl": "^7.1.7",
+    "react-mapbox-gl": "^5.1.1",
+    "react-slick": "^0.30.2",
+    "react-toastify": "^10.0.5",
+    "redis": "^4.7.0",
+    "sharp": "^0.33.3",
+    "slick-carousel": "^1.8.1",
+    "sweetalert2": "^11.10.7",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18.2.74",
+    "@types/react-dom": "^18.2.24",
+    "@types/react-slick": "^0.23.13",
+    "autoprefixer": "^10.0.1",
+    "postcss": "^8",
+    "tailwindcss": "^3.3.0",
+    "typescript": "^5"
+  }
+}

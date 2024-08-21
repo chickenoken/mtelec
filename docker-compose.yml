@@ -1,0 +1,73 @@
+version: "4.2"
+
+services:
+  app:
+    container_name: app
+    image: mtelec
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    env_file:
+      - ./.env.production
+    volumes:
+      - ./credentials.json:/app/credentials.json
+    depends_on:
+      - mongo
+      - redis
+    networks:
+      - app-network
+
+  mongo:
+    container_name: mongo
+    image: mongo
+    env_file:
+      - ./.env.production
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
+      - MONGO_INITDB_DATABASE=${MONGO_INITDB_DATABASE}
+    volumes:
+      - mongodb_data:/data/db
+      - ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js
+    command: [--auth]
+    networks:
+      - app-network
+    restart: always
+
+  nginx:
+    build:
+      context: .
+      dockerfile: Dockerfile.nginx
+    image: nginx
+    container_name: nginx
+    ports:
+      - '80:80'
+    networks:
+      - app-network
+    depends_on:
+      - app
+    restart: always
+
+  redis:
+    image: redis
+    container_name: redis
+    networks:
+      - app-network
+
+  # certbot:
+  #   image: certbot/certbot
+  #   container_name: certbot
+  #   volumes:
+  #     - ./certbot/www:/var/www/certbot
+  #     - ./certs:/etc/letsencrypt
+  #   entrypoint: /bin/sh -c "trap exit TERM; while :; do certbot certonly --webroot --webroot-path=/var/www/certbot --email chicuongg6622@gmail.com --agree-tos --no-eff-email -d mtelec.vn; sleep 12h & wait $${!}; done;"
+  #   networks:
+  #     - app-network
+
+volumes:
+  mongodb_data:
+
+networks:
+  app-network:
+    driver: bridge

@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Trirong:wght@100&display=swap");
+
+.trilong {
+	font-family: "Trirong", serif;
+}
+
+.bg-mte {
+	background: linear-gradient(to left, #2b6cb0, #68d391, #38a169);
+}
+
+.bg2-mte {
+	background: linear-gradient(to left, #00bcd4, #38b2ac, #27ae60);
+}
+
+.mte-grey {
+	background: linear-gradient(to left, #d1d5db, #f3f4f6, #d1d5db);
+}
+
+.mte-grey:hover {
+	background: linear-gradient(to left, #00bcd4, #38b2ac, #27ae60);
+	color: white;
+}
+
+.grey {
+	background: linear-gradient(to left, #d1d5db, #f3f4f6, #d1d5db);
+}
+
+.txt-mte {
+	background: linear-gradient(266.22deg, #00b6d7 -6.05%, #4abea6 26.45%, #33af4a 80.61%);
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+}
+
+.slick-track {
+	display: flex !important;
+	align-items: center !important;
+}
+
+.slick-prev:before {
+	content: "" !important;
+}
+.slick-next:before {
+	content: "" !important;
+}
+
+#nprogress .bar {
+	background: linear-gradient(to left, #2b6cb0, #68d391, #38a169) !important;
+}
+
+#nprogress .peg {
+	box-shadow: 0 0 10px #ffbb00, 0 0 5px #ffbb00;
+}
+
+#nprogress .spinner-icon {
+	border-top-color: #ffbb00;
+	border-left-color: #ffbb00;
+}
+
+ol,
+ul {
+	list-style: initial;
+	margin: initial;
+	padding: initial;
+}
+
+.swal2-container {
+	z-index: 10000;
+}
+
+@keyframes nyan-cat-animation {
+	0% {
+		background-position: left top;
+	}
+	100% {
+		background-position: right top;
+	}
+}
+
+.nyan-cat::after {
+	content: "";
+	background: rgba(0, 0, 123, 0.4) url("/nyan-cat-nyan.gif") no-repeat;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: -1;
+	animation: nyan-cat-animation 5s linear infinite;
+}
+
+.truncate-3 {
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	-webkit-line-clamp: 3;
+	max-height: calc(1.5em * 3);
+	position: relative;
+}
+
+.truncate-3::before {
+	content: "";
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 50%;
+	height: 1.5em;
+	background: linear-gradient(to right, transparent, white 50%);
+}
