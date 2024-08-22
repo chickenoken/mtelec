@@ -116,6 +116,7 @@ const ProjectList = () => {
                 </List>
               </Grid>
               <Grid xs={12} md={8} sx={{ bgcolor: '#F5F5F5'}}>
+                <Typography variant="h6" className="trilong text-black italic font-bold">Working fields</Typography>
                 {workField && workField.map((item: any, index: number) => (
                   <ListItem alignItems="flex-start" key={index} sx={{ padding: '0', margin: '0' }}>
                   <ListItemIcon sx={{ minWidth: '30px', ml: item.endsWith(':') ? 0 : 2  }}>
