@@ -7,3 +7,9 @@ export const getAllCustomer = async () => {
   const customers = await Customer.find({}).sort({ createdAt: -1 });
   return customers;
 }
+
+export const delCustomer = async (id: any) => {
+  await dbConnect();
+  await Customer.deleteOne({ _id : id });
+  return {status : 200};
+}

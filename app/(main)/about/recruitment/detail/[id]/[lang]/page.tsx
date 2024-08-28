@@ -141,7 +141,7 @@ const page = ({ params }: { params: { id: string, lang: string } }) => {
           flexDirection={{ xs: 'column', sm: 'row' }}
         >
           <Typography variant="h5" component="div" className="txt-mte font-bold" mb={{ xs: 2, sm: 0 }}>
-            Job Description
+            {mode == 0 ? 'Job Description' : 'Thông Tin Công Việc'}
           </Typography>
           <Box className="text-end">
             <ToggleButtonGroup

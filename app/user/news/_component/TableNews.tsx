@@ -6,6 +6,7 @@ import { format } from "date-fns";
 import { useEffect, useState } from "react";
 import { DialogService } from "@lib/DialogService";
 import { delNew, getAllNew } from "../_server/TableNewsAction";
+import Image from "next/image";
 
 const TableNews = () => {
   const [page, setPage] = useState(0);
@@ -46,7 +47,7 @@ const TableNews = () => {
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell>ID</TableCell>
+              <TableCell>Type</TableCell>
               <TableCell>Title</TableCell>
               <TableCell>Create At</TableCell>
               <TableCell></TableCell>
@@ -56,7 +57,7 @@ const TableNews = () => {
           <TableBody>
             {news && news.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => (
               <TableRow key={row._id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                <TableCell component="th" scope="row">{row._id}</TableCell>
+                <TableCell component="th" scope="row">{row.type}</TableCell>
                 <TableCell component="th" scope="row">{row.title}</TableCell>
                 <TableCell>{format(new Date(row.createdAt), 'yyyy/MM/dd HH:mm:ss')}</TableCell>
                 <TableCell size="small" width="20px">

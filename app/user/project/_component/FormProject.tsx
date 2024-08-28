@@ -16,11 +16,11 @@ import { getProjectById, saveProject, updateProject } from '../_server/FormProje
 import { CommonService } from '@lib/CommonService';
 
 const schema: ZodType = z.object({
-  project_name: z.string().min(4, 'User Name must be at least 3 characters'),
-  client:z.string().min(4, 'User Name must be at least 3 characters'),
-  location: z.string().min(4, 'User Name must be at least 3 characters'),
-  complete_date: z.string().min(4, 'User Name must be at least 3 characters'),
-  working_field: z.string().min(4, 'User Name must be at least 3 characters'),
+  project_name: z.string().min(1, 'Input is required'),
+  client:z.string().min(1, 'Input is required'),
+  location: z.string().min(1, 'Input is required'),
+  complete_date: z.string().min(1, 'Input is required'),
+  working_field: z.string().min(1, 'Input is required'),
 });
 
 const FormProject = (params: any) => {

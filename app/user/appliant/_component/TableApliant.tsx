@@ -1,8 +1,10 @@
 "use client";
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TablePagination } from "@mui/material";
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TablePagination, IconButton } from "@mui/material";
 import { useEffect, useState } from "react";
 import { format } from 'date-fns';
-import { getAllAppliant } from "../_server/TableAppliantAction";
+import { delAppliant, getAllAppliant } from "../_server/TableAppliantAction";
+import { MdDeleteForever } from "react-icons/md";
+import { DialogService } from "@lib/DialogService";
 
 const TableCust = () => {
   const [page, setPage] = useState(0);
@@ -23,6 +25,15 @@ const TableCust = () => {
     setAppliant(appliant);
   }
 
+  const handleDel = async (id : string) => {
+    DialogService.del("Do you want to delete the changes ?", async () => {
+      let res = await delAppliant(id);
+      if(res.status == 200){
+        getAppliant();
+      }
+    });
+  }
+
   useEffect(() => {
     getAppliant();
   }, []);
@@ -38,6 +49,7 @@ const TableCust = () => {
               <TableCell>Phone</TableCell>
               <TableCell>CV</TableCell>
               <TableCell>Time</TableCell>
+              <TableCell></TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -50,6 +62,11 @@ const TableCust = () => {
                 <TableCell>{row.phone}</TableCell>
                 <TableCell>{row.cv}</TableCell>
                 <TableCell>{format(new Date(row.createdAt), 'yyyy/MM/dd HH:mm:ss')}</TableCell>
+                <TableCell size="small" width="20px">
+                  <IconButton onClick={() => handleDel(row._id)}> 
+                    <MdDeleteForever color="red" />
+                  </IconButton>
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>

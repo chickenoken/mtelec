@@ -33,7 +33,7 @@ const ImgCarousel = ({ mode, title='text-left' }: Props) => {
     if (isHovered) return;
     const interval = setInterval(() => {
       handleNext();
-    }, 2000); 
+    }, 3000); 
 
     return () => clearInterval(interval);
   }, [isHovered]);

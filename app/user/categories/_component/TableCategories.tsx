@@ -6,6 +6,7 @@ import { MdDeleteForever, MdEditSquare } from "react-icons/md";
 import { format } from "date-fns";
 import { DialogService } from "@lib/DialogService";
 import { delCate, getAllCate } from "../_server/TableCategoriesAction";
+import Image from "next/image";
 
 const TableCategories = () => {
   const [page, setPage] = useState(0);
@@ -45,9 +46,8 @@ const TableCategories = () => {
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell>ID</TableCell>
+              <TableCell>Img</TableCell>
               <TableCell>Category Name</TableCell>
-              <TableCell>Project Detail</TableCell>
               <TableCell>Create At</TableCell>
               <TableCell></TableCell>
               <TableCell></TableCell>
@@ -58,9 +58,10 @@ const TableCategories = () => {
               <TableRow
                 key={row._id}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                <TableCell component="th" scope="row">{row._id}</TableCell>
+                <TableCell component="th" scope="row">
+                  <Image src={row.image} alt={row.cate_name} width={100} height={100} />
+                </TableCell>
                 <TableCell component="th" scope="row">{row.cate_name}</TableCell>
-                <TableCell>{row.project_detail}</TableCell>
                 <TableCell>{format(new Date(row.createdAt), 'yyyy/MM/dd HH:mm:ss')}</TableCell>
                 <TableCell size="small" width="20px">
                   <Link href={`/user/categories/detail/${row._id}`}>

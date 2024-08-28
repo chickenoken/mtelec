@@ -20,11 +20,11 @@ const FormIndex = () => {
   const [originalData, setOriginalData] = useState<any>({});
 
   const schema = z.object({
-    about1: z.string().min(4, 'User Name must be at least 3 characters'),
-    about2: z.string().min(4, 'User Name must be at least 3 characters'),
-    concept: z.string().min(4, 'User Name must be at least 3 characters'),
-    image1: z.string().min(4, 'User Name must be at least 3 characters'),
-    image2: z.string().min(4, 'User Name must be at least 3 characters'),
+    about1: z.string().min(1, 'Input is required'),
+    about2: z.string().min(1, 'Input is required'),
+    concept: z.string().min(1, 'Input is required'),
+    image1: z.string().min(1, 'Input is required'),
+    image2: z.string().min(1, 'Input is required'),
   });
   const { register, getValues, trigger, setValue, watch, formState: { errors } } = useForm({ resolver: zodResolver(schema) });
 

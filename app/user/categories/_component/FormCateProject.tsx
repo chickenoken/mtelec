@@ -53,10 +53,10 @@ const FormCateProject = (params: any) => {
 
   const schema = z.object({
     cate_id:  z.string(),
-    cate_title: z.string().min(4, 'User Name must be at least 3 characters'),
-    cate_pro_name:  z.string().min(4, 'User Name must be at least 3 characters'),
-    location:  z.string().min(4, 'User Name must be at least 3 characters'),
-    detail:  z.string().min(4, 'User Name must be at least 3 characters'),
+    cate_title: z.string().min(1, 'Input is required'),
+    cate_pro_name:  z.string().min(1, 'Input is required'),
+    location:  z.string().min(1, 'Input is required'),
+    detail:  z.string().min(1, 'Input is required'),
   })
 
   const { register, trigger, formState: { errors }, watch, setValue, getValues, control } = useForm({ resolver: zodResolver(schema) });

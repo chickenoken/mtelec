@@ -54,8 +54,8 @@ const FormNewFile = (params: any) => {
   }, []);
 
   const schema = z.object({
-    id_news: z.string().min(4, 'User Name must be at least 3 characters'),
-    file_name: z.string().min(4, 'User Name must be at least 3 characters'),
+    id_news: z.string().min(1, 'Input is required'),
+    file_name: z.string().min(1, 'Input is required'),
   })
 
   const { register, trigger, formState: { errors }, watch, setValue, getValues, control } = useForm({ resolver: zodResolver(schema) });

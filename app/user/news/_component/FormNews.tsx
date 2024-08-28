@@ -15,10 +15,10 @@ import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFnsV3';
 
 const schema: ZodType = z.object({
-  title: z.string().min(4, 'User Name must be at least 3 characters'),
-  content: z.string().min(4, 'User Name must be at least 3 characters'),
-  type : z.string().min(4, 'User Name must be at least 3 characters'),
-  dateUp : z.string().min(4, 'User Name must be at least 3 characters'),
+  title: z.string().min(1, 'Input is required'),
+  content: z.string().min(1, 'Input is required'),
+  type : z.string().min(1, 'Input is required'),
+  dateUp : z.string().min(1, 'Input is required'),
 });
 const FormNews = (params: any) => {
   const { register, trigger, control, getValues, setValue, watch, formState: { errors } } = useForm({ resolver: zodResolver(schema) });

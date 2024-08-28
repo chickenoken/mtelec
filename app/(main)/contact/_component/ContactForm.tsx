@@ -8,10 +8,10 @@ import { z } from 'zod';
 import { saveContact } from '../_server/ContactAction';
 
 const schema = z.object({
-  name: z.string().min(4, 'User Name must be at least 3 characters'),
-  email: z.string().min(4, 'User Name must be at least 3 characters'),
-  phone : z.string().min(4, 'User Name must be at least 3 characters'),
-  note : z.string().min(4, 'User Name must be at least 3 characters'),
+  name: z.string().min(1, 'Input is required'),
+  email: z.string().min(1, 'Input is required'),
+  phone : z.string().min(1, 'Input is required'),
+  note : z.string().min(1, 'Input is required'),
 });
 const ContactForm = () => {
   const { register, handleSubmit, reset, getValues, formState: { errors } } = useForm({ resolver: zodResolver(schema) });

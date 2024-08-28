@@ -6,6 +6,7 @@ import Link from "next/link"
 import { useEffect, useState } from "react";
 import { MdDeleteForever, MdEditSquare } from "react-icons/md"
 import { delProject, getAllProject } from "../_server/TableProjectAction";
+import Image from "next/image";
 
 const TableProject = () => {
   const [page, setPage] = useState(0);
@@ -45,10 +46,9 @@ const TableProject = () => {
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell>ID</TableCell>
+              <TableCell>Img</TableCell>
               <TableCell>Project Name</TableCell>
               <TableCell>Client</TableCell>
-              <TableCell>Location</TableCell>
               <TableCell>Complete Day</TableCell>
               <TableCell>Create At</TableCell>
               <TableCell></TableCell>
@@ -60,10 +60,11 @@ const TableProject = () => {
               <TableRow
                 key={row._id}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                <TableCell component="th" scope="row">{row._id}</TableCell>
+                <TableCell component="th" scope="row">
+                  <Image src={row.image} alt={row.client} width={100} height={100} />
+                </TableCell>
                 <TableCell component="th" scope="row">{row.project_name}</TableCell>
                 <TableCell>{row.client}</TableCell>
-                <TableCell>{row.location}</TableCell>
                 <TableCell>{format(new Date(row.complete_date), 'MM/yyyy')}</TableCell>
                 <TableCell>{format(new Date(row.createdAt), 'yyyy/MM/dd HH:mm:ss')}</TableCell>
                 <TableCell size="small" width="20px">

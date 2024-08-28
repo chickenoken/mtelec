@@ -8,11 +8,11 @@ import { z } from "zod";
 import { saveApplyRecruit } from "../_server/RecruitmentAction";
 
 const schema = z.object({
-  name: z.string().min(4, 'User Name must be at least 3 characters'),
-  email: z.string().min(4, 'User Name must be at least 3 characters'),
-  phone : z.string().min(4, 'User Name must be at least 3 characters'),
-  position : z.string().min(4, 'User Name must be at least 3 characters'),
-  cv: z.string().min(4, 'User Name must be at least 3 characters'),
+  name: z.string().min(1, 'Input is required'),
+  email: z.string().min(1, 'Input is required'),
+  phone : z.string().min(1, 'Input is required'),
+  position : z.string().min(1, 'Input is required'),
+  cv: z.string().min(1, 'Input is required'),
 });
 const FormApplyRecruit = () => {
   const { register, handleSubmit, reset, getValues, formState: { errors } } = useForm({ resolver: zodResolver(schema) });

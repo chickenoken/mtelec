@@ -20,7 +20,7 @@ interface FormCategoriesProps {
 const FormCategories = ({ id }: FormCategoriesProps) => {
 	const router = useRouter();
 	const schema = z.object({
-		cate_name: z.string().min(4, "User Name must be at least 3 characters"),
+		cate_name: z.string().min(1, "Input is required"),
 	});
 
 	const {

@@ -40,7 +40,7 @@ const FormWorkingField = ({
 }: FormWorkingFieldProps) => {
 	const router = useRouter();
 	const schema = z.object({
-		title: z.string().min(4, "User Name must be at least 3 characters"),
+		title: z.string().min(1, "Input is required"),
 		sub1: z.string().optional(),
 		sub2: z.string().optional(),
 	});

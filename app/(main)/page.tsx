@@ -226,7 +226,7 @@ export default function Home() {
 								alignItems="center"
 								style={{ height: "100%" }}
 							>
-								<ImageChange aboutImg={imageChange} width={692} height={450} />
+								<ImageChange aboutImg={imageChange} width={692} height={450} isAnimate={true} />
 							</Box>
 						</Grid>
 					</Grid>

@@ -7,16 +7,17 @@ interface ImageChangeProps {
   aboutImg: any;
   width: number;
   height: number;
+  isAnimate?: boolean;
 }
 
-const ImageChange: React.FC<ImageChangeProps> = ({ aboutImg, width, height }) => {
+const ImageChange: React.FC<ImageChangeProps> = ({ aboutImg, width, height, isAnimate=false }) => {
   const [curImg, setCurImg] = useState(0);
 
   useEffect(() => {
     if (aboutImg.length === 0) return; 
     const interval = setInterval(() => {
       setCurImg((prevIndex) => (prevIndex + 1) % aboutImg.length);
-    }, 3000);
+    }, 4000);
     return () => clearInterval(interval);
   }, [aboutImg.length]);
 
@@ -29,10 +30,11 @@ const ImageChange: React.FC<ImageChangeProps> = ({ aboutImg, width, height }) =>
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
-      transition={{ duration: 2.3 }}
+      transition={{ duration: 0.8 }}
+      key={curImg}
       variants={{
         visible: { opacity: 1 },
-        hidden: { opacity: 0 }
+        hidden: { opacity: isAnimate ? 0 : 1 }
       }}
     >
       <Image
