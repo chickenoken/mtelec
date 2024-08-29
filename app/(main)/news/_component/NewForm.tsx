@@ -53,7 +53,7 @@ const NewForm = () => {
         <Link href={`/news/detail/${mainNew?._id}`}>
           <CardActionArea>
             <Grid container spacing={2} alignItems="center">
-              <Grid xs={4} style={{ position: 'relative', height: '300px' }}>
+              <Grid xs={12} md={4} style={{ position: 'relative', height: '300px' }}>
                 <Box sx={{
                   position: 'absolute',
                   top: 0,
@@ -73,7 +73,7 @@ const NewForm = () => {
                   />
                 </Box>
               </Grid>
-              <Grid xs={8} className="ps-14 pe-14">
+              <Grid xs={12} md={8} className="ps-8 pe-8 md:ps-14 md:pe-14">
                 <Box className="py-5">
                   <Typography variant="body2" className="bg-mte text-white" 
                     sx={{ 

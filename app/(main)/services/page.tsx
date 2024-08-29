@@ -60,15 +60,15 @@ const page = () => {
       >
         <AnimUp>
           <Box display="flex" alignItems="center">
-            <Box display="flex" className="border-b-2 ms-16">
+            <Box display="flex" className="border-b-2 md:ms-16">
               <MdChevronRight size="2rem" className="me-2" color="white"/>
               <Typography variant="overline"  className="text-white me-2 text-lg">HOME PAGE</Typography>
               <MdChevronRight size="2rem" className="me-2" color="white"/>
               <Typography variant="overline"  className="text-white me-2 text-lg">SERVICE</Typography>
             </Box>
           </Box>
-          <Typography variant="h3" className="trilong italic text-white ms-16">Our</Typography>
-          <Typography variant="h3" className="font-bold text-white ms-16">SERVICES</Typography>
+          <Typography variant="h3" className="trilong italic text-white md:ms-16">Our</Typography>
+          <Typography variant="h3" className="font-bold text-white md:ms-16">SERVICES</Typography>
         </AnimUp>
         <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center', marginTop: '100px' }}>
           <Box sx={{ width: '100%' }}>
@@ -76,14 +76,6 @@ const page = () => {
           </Box>
         </Box>
       </Box>
-
-
-
-
-
-
-
-
       </FadeInWhenVisible>
       <Container>
         <Service />

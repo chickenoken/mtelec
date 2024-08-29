@@ -110,8 +110,9 @@ export default function Home() {
 
 	const getData = async () => {
 		let rs = await getPIndex();
-		let prj: IProduct[] = await getFactory();
 		setData(rs);
+		setLoading(false);
+		let prj: IProduct[] = await getFactory();
 		setPrj(prj);
 
     const arrImgChange: IImageChange[] = [
@@ -120,7 +121,6 @@ export default function Home() {
     ];
 
     setImageChange(arrImgChange);
-		setLoading(false);
 	};
 
 	useEffect(() => {

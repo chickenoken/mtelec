@@ -45,7 +45,7 @@ const page = () => {
               <MdChevronRight size="2rem" className="me-2" color="white" />
               <Typography variant="overline" className="text-white me-2 text-lg">NEWS</Typography>
             </Box>
-            <Typography variant="h3" className="trilong italic text-white mt-4 ms-16">Internal</Typography>
+            <Typography variant="h3" className="trilong italic text-white mt-4 md:ms-16">Internal</Typography>
             <Typography variant="h3" className="font-bold text-white mb-4 md:ms-16">NEWS</Typography>
           </Box>
         </AnimUp>

@@ -234,7 +234,7 @@ const page = () => {
           <Typography variant="h5" className="font-bold trilong italic mb-4">{data?.wk5}</Typography>
         </Box>
         <Box>
-          <Image className='me-2 w-full h-full' src={data?.image7 ?? ""} alt="alt" quality={100} width={1920} height={1800} /> 
+          <Image className='mt-8 me-2 w-full h-full' src={data?.image7 ?? ""} alt="alt" quality={100} width={1920} height={1800} /> 
         </Box>
         <Box className="mt-10 p-8" sx={{ backgroundImage: `url('/asset/img/about/bg_1.png')`, backgroundSize: 'cover'}}>
           <Typography variant="h5" className="font-bold trilong italic mb-4">M&E Maintenaince Service</Typography>
