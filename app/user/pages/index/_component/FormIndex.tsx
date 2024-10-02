@@ -117,13 +117,6 @@ const FormIndex = () => {
           </Box>
         </Grid>
       </Grid>
-
-
-
-      
-
-
-
     </>
   )
 }

@@ -14,7 +14,7 @@ import Link from "next/link";
 import React from "react";
 import { BsDashLg, BsInfoSquareFill } from "react-icons/bs";
 import { IoLogOutOutline, IoNewspaperSharp } from "react-icons/io5";
-import { MdDesignServices, MdExpandLess, MdExpandMore } from "react-icons/md";
+import { MdContactSupport, MdDesignServices, MdExpandLess, MdExpandMore } from "react-icons/md";
 import { RiMenuFoldFill } from "react-icons/ri";
 import { toast } from "react-toastify";
 import { logout } from "./LayoutAction";
@@ -24,6 +24,7 @@ import { RiProfileFill } from "react-icons/ri";
 import { FaCircleUser } from "react-icons/fa6";
 import { clearRedisCache } from "./_server/LayoutUserActions";
 import { DialogService } from "@lib/DialogService";
+import { BiSolidContact } from "react-icons/bi";
 
 const drawerWidth: number = 250;
 
@@ -316,6 +317,14 @@ const LayoutUser = () => {
 									<IoNewspaperSharp size="1.5em" />
 								</ListItemIcon>
 								<ListItemText primary="News" />
+							</ListItemButton>
+						</Link>
+						<Link href="/user/contact">
+							<ListItemButton>
+								<ListItemIcon>
+									<BiSolidContact size="1.5em" />
+								</ListItemIcon>
+								<ListItemText primary="Contact" />
 							</ListItemButton>
 						</Link>
 						<ListItemButton onClick={() => setReUser(!reUser)}>

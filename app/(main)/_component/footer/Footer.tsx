@@ -1,14 +1,16 @@
+"use client"
 import { Box, Typography } from '@mui/material';
 import Image from 'next/image';
 import { BiSolidRightArrow } from 'react-icons/bi';
 import { BsTelephone } from 'react-icons/bs';
 import { FiMail, FiMapPin } from 'react-icons/fi';
-import { ReactNode } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import { MotionDiv } from '@components/motion/MotionDiv';
 import Grid from '@mui/material/Unstable_Grid2/Grid2';
 import { GoDownload } from 'react-icons/go';
 import Link from 'next/link';
 import Visitor from '@components/gapi/Visitor';
+import { getContactInfo } from '@app/user/contact/_server/FormContactAction';
 
 const Footer = () => {
   const LeftToRight = ({ children }: { children: ReactNode }) => {
@@ -27,6 +29,28 @@ const Footer = () => {
       </MotionDiv>
     );
   };
+
+  interface Contact {
+		label: string;
+    address: string;
+    phone: string;
+    email: string;
+    latitude: string;
+    longitude: string;
+	}
+
+	const [data, setData] = useState<Contact>();
+	const [loading, setLoading] = useState(true);
+
+  const getData = async () => {
+		let rs = await getContactInfo();
+		setData(rs);
+		setLoading(false);
+	};
+
+	useEffect(() => {
+		getData();
+	}, []);
 
   return (
     <>
@@ -53,16 +77,16 @@ const Footer = () => {
                   <Typography className="text-white mt-2">MTELEC Co., LTD</Typography>
                   <Box className='flex mb-1 mt-4'>
                     <FiMapPin className="text-white" size={20} />
-                    <Typography className='text-white ml-2 text-sm'>No 22, Street No 6, KP6, Binh Hung Hoa B Ward, Binh Tan District, Ho Chi Minh City, Viet Nam</Typography>
+                    <Typography className='text-white ml-2 text-sm'>{data?.address}</Typography>
                   </Box>
                   <Box className='lg:flex items-center mb-2'>
                     <Box className='flex items-center mb-2'>
                       <BsTelephone className="text-white" size={15} />
-                      <Typography className='text-white ml-2 text-sm'>(84-28) 37655273 - 37655274</Typography>
+                      <Typography className='text-white ml-2 text-sm'>{data?.phone}</Typography>
                     </Box>
                     <Box className='flex items-center lg:ml-4 mb-2'>
                       <FiMail className="text-white" size={15} />
-                      <Typography className='text-white ml-2 text-sm'>mtelec@mtelec.vn</Typography>
+                      <Typography className='text-white ml-2 text-sm'>{data?.email}</Typography>
                     </Box>
                   </Box>
                 </Box>

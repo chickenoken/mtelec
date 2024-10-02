@@ -1,12 +1,13 @@
-import { Box, Card, CardContent, Container, Typography } from "@mui/material"
+"use client";
+import { Box, Card, CardContent, CircularProgress, Container, Typography } from "@mui/material"
 import Grid from "@mui/material/Unstable_Grid2/Grid2"
 import Image from "next/image"
 import { MdChevronRight } from "react-icons/md"
 import { MotionDiv } from "@components/motion/MotionDiv"
-import { ReactNode } from "react"
-import Gmap from "./_component/Gmap"
+import React, { ReactNode, useEffect, useState } from "react"
 import ContactForm from "./_component/ContactForm"
 import MapBox from "./_component/MapBox"
+import { getContactInfo } from "@app/user/contact/_server/FormContactAction"
 
 const page = () => {
   const AnimUp = ({ children }: { children: ReactNode }) => {
@@ -25,9 +26,36 @@ const page = () => {
       </MotionDiv>
     );
   };
+  interface Contact {
+		label: string;
+    address: string;
+    phone: string;
+    email: string;
+    latitude: string;
+    longitude: string;
+	}
+
+	const [data, setData] = useState<Contact>();
+	const [loading, setLoading] = useState(true);
+
+  const getData = async () => {
+		let rs = await getContactInfo();
+		setData(rs);
+		setLoading(false);
+	};
+
+	useEffect(() => {
+		getData();
+	}, []);
 
   return (
     <>
+      {loading ? (
+					<Box display="flex" justifyContent="center" alignItems="center" height="100vh">
+						<CircularProgress />
+					</Box>
+				) : (
+					<>
       <Box display="flex" alignItems="center" sx={{
         height: { xs: '300px', sm: '500px' }, 
         backgroundImage: `url(${"/asset/img/contact/hero.png"})`,
@@ -56,22 +84,22 @@ const page = () => {
             <Grid container className="p-2 md:p-10" spacing={10}>
               <Grid md={6}>
                 <Typography variant="body2" className="mb-5">
-                  Thank you for visiting MTELEC's website. Don't hesitate to contact us if you have further information.
+                  {data?.label}
                 </Typography>
                 <Typography variant="h5" className='font-bold txt-mte mb-4' >
                   MTELEC Co., LTD
                 </Typography>
                 <Box className="flex items-center mb-4">
                   <Image src="/asset/svg/contact/map.svg" alt="alt" width={40} height={40} />
-                  <Typography className="ml-2 font-bold">No 22, Street No 6, KP6, Binh Hung Hoa B Ward, Binh Tan District, Ho Chi Minh City, Viet Nam</Typography>
+                  <Typography className="ml-2 font-bold">{data?.address}</Typography>
                 </Box>
                 <Box className="flex items-center mb-4">
                   <Image src="/asset/svg/contact/phone.svg" alt="alt" width={40} height={40} />
-                  <Typography className="ml-2 font-bold">(84-28) 37655273 - 37655274</Typography>
+                  <Typography className="ml-2 font-bold">{data?.phone}</Typography>
                 </Box>
                 <Box className="flex items-center mb-10">
                   <Image src="/asset/svg/contact/mail.svg" alt="alt" width={40} height={40} />
-                  <Typography className="ml-2 font-bold">mtelec@mtelec.vn</Typography>
+                  <Typography className="ml-2 font-bold">{data?.email}</Typography>
                 </Box>
                 <Box>
                   <a
@@ -94,6 +122,8 @@ const page = () => {
         </Card>
         </AnimUp>
       </Container>
+      </>
+			)}
     </>
   )
 }
