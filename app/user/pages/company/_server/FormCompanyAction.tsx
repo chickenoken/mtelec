@@ -20,12 +20,16 @@ export const savePCompanyInfo = async (data: any) => {
   inf.fileName3 = data.fileName3;
   inf.fileName4 = data.fileName4;
   inf.fileName5 = data.fileName5;
+  inf.fileName6 = data.fileName6;
+  inf.fileName7 = data.fileName7;
 
   if (data.image1) inf.image1 = data.image1;
   if (data.image2) inf.image2 = data.image2;
   if (data.image3) inf.image3 = data.image3;
   if (data.image4) inf.image4 = data.image4;
   if (data.image5) inf.image5 = data.image5;
+  if (data.image6) inf.image6 = data.image6;
+  if (data.image7) inf.image7 = data.image7;
 
   const redis = await getRedisClient();
   await redis.del('pcompanyinfo');

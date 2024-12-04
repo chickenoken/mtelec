@@ -17,11 +17,15 @@ const FormCompany = () => {
   const fileImg3 = useRef<HTMLInputElement>(null);
   const fileImg4 = useRef<HTMLInputElement>(null);
   const fileImg5 = useRef<HTMLInputElement>(null);
+  const fileImg6 = useRef<HTMLInputElement>(null);
+  const fileImg7 = useRef<HTMLInputElement>(null);
   const [imageSrc1, setImageSrc1] = useState<string | null>(null);
   const [imageSrc2, setImageSrc2] = useState<string | null>(null);
   const [imageSrc3, setImageSrc3] = useState<string | null>(null);
   const [imageSrc4, setImageSrc4] = useState<string | null>(null);
   const [imageSrc5, setImageSrc5] = useState<string | null>(null);
+  const [imageSrc6, setImageSrc6] = useState<string | null>(null);
+  const [imageSrc7, setImageSrc7] = useState<string | null>(null);
   const [originalData, setOriginalData] = useState<any>({});
 
   const handleFileChange = async (event: any, imageSetter :any, fieldName: any) => {
@@ -54,6 +58,10 @@ const FormCompany = () => {
     image4: z.string().min(1, 'Image 4 is required'),
     fileName5: z.string().min(1, 'File name 5 is required'),
     image5: z.string().min(1, 'Image 5 is required'),
+    fileName6: z.string().min(1, 'File name 6 is required'),
+    image6: z.string().min(1, 'Image 6 is required'),
+    fileName7: z.string().min(1, 'File name 7 is required'),
+    image7: z.string().min(1, 'Image 7 is required'),
   });
   const { register, getValues, trigger, setValue, watch, formState: { errors } } = useForm({ resolver: zodResolver(schema) });
 
@@ -68,6 +76,9 @@ const FormCompany = () => {
       if(param.image3 === originalData.image3) param.image3 = '';
       if(param.image4 === originalData.image4) param.image4 = '';
 			if(param.image5 === originalData.image5) param.image5 = '';
+			if(param.image6 === originalData.image6) param.image6 = '';
+			if(param.image7 === originalData.image7) param.image7 = '';
+
       let re = await savePCompanyInfo(param);
       if(re.status === 200){
         DialogService.success('Your data has been saved', () => {});
@@ -86,6 +97,8 @@ const FormCompany = () => {
       setImageSrc3(rs.image3);
       setImageSrc4(rs.image4);
       setImageSrc5(rs.image5);
+      setImageSrc6(rs.image6);
+      setImageSrc7(rs.image7);
       setOriginalData(rs);
     }
   }
@@ -227,6 +240,44 @@ const FormCompany = () => {
             </Button>
             { imageSrc5 && 
               <Card><CardMedia component="img" height="20" image={imageSrc5} alt="Preview"/></Card>
+            }
+          </Box>
+        </Grid>
+      </Grid>
+
+      <Grid container spacing={10}>
+        <Grid md={6}>
+          <TextField error={Boolean(errors.fileName6)} InputLabelProps={{ shrink: !!watch('fileName6') }} required fullWidth variant="outlined" size="small" label="Name" autoFocus {...register('fileName6')}/>
+          {/* @ts-ignore */}
+          {errors.fileName6 && <Typography variant="caption" color={'red'}>{errors.fileName6.message}</Typography>}
+        </Grid>
+        <Grid md={6}>
+          <Box className="w-40 mb-4" >
+            <input type="file" {...register('image6')} ref={fileImg6} style={{ display: 'none' }} onChange={(e) => handleFileChange(e, setImageSrc6, 'image6')} />
+            <Button variant="contained" color="primary" className='bg-mte mb-2' onClick={() => handleUploadClick(fileImg6)}>
+              Upload
+            </Button>
+            { imageSrc6 && 
+              <Card><CardMedia component="img" height="20" image={imageSrc6} alt="Preview"/></Card>
+            }
+          </Box>
+        </Grid>
+      </Grid>
+
+      <Grid container spacing={10}>
+        <Grid md={6}>
+          <TextField error={Boolean(errors.fileName7)} InputLabelProps={{ shrink: !!watch('fileName7') }} required fullWidth variant="outlined" size="small" label="Name" autoFocus {...register('fileName7')}/>
+          {/* @ts-ignore */}
+          {errors.fileName7 && <Typography variant="caption" color={'red'}>{errors.fileName7.message}</Typography>}
+        </Grid>
+        <Grid md={6}>
+          <Box className="w-40 mb-4" >
+            <input type="file" {...register('image7')} ref={fileImg7} style={{ display: 'none' }} onChange={(e) => handleFileChange(e, setImageSrc7, 'image7')} />
+            <Button variant="contained" color="primary" className='bg-mte mb-2' onClick={() => handleUploadClick(fileImg7)}>
+              Upload
+            </Button>
+            { imageSrc7 && 
+              <Card><CardMedia component="img" height="20" image={imageSrc7} alt="Preview"/></Card>
             }
           </Box>
         </Grid>

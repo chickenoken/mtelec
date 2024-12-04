@@ -18,6 +18,10 @@ const PCompanyInfoSchema: MongooseSchema = new mongoose.Schema({
   image4: { type: String },
   fileName5: { type: String },
   image5: { type: String },
+  fileName6: { type: String },
+  image6: { type: String },
+  fileName7: { type: String },
+  image7: { type: String },
 },{timestamps: true});
 
 interface IPCompanyInfo extends Document {
@@ -38,6 +42,10 @@ interface IPCompanyInfo extends Document {
   image4: string;
   fileName5: string;
   image5: string;
+  fileName6: string;
+  image6: string;
+  fileName7: string;
+  image7: string;
 }
 
 const PCompanyInfo = mongoose.models.PCompanyInfo || mongoose.model<IPCompanyInfo>('PCompanyInfo', PCompanyInfoSchema);

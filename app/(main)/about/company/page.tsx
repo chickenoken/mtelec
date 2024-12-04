@@ -43,6 +43,10 @@ const page = () => {
     image4: string;
     fileName5: string;
     image5: string;
+    fileName6: string;
+    image6: string;
+    fileName7: string;
+    image7: string;
   }
 
   const [data, setData] = React.useState<PAbout>();
@@ -196,6 +200,24 @@ const page = () => {
             </Grid>
             <Grid md={6} className="flex items-center justify-center">
               <Image src={data?.image5 ?? ""} alt="leg" width={420} height={420} />
+            </Grid>
+          </Grid>
+
+          <Grid className="mb-4" container justifyContent="center" alignItems="center">
+            <Grid md={6}>
+              <Typography variant='h5' className='trilong italic font-bold'>{data?.fileName6}</Typography>
+            </Grid>
+            <Grid md={6} className="flex items-center justify-center">
+              <Image src={data?.image6 ?? ""} alt="leg" width={420} height={420} />
+            </Grid>
+          </Grid>
+
+          <Grid className="mb-4" container justifyContent="center" alignItems="center">
+            <Grid md={6}>
+              <Typography variant='h5' className='trilong italic font-bold'>{data?.fileName7}</Typography>
+            </Grid>
+            <Grid md={6} className="flex items-center justify-center">
+              <Image src={data?.image7 ?? ""} alt="leg" width={420} height={420} />
             </Grid>
           </Grid>
           </AnimUp>
